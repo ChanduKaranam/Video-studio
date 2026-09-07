@@ -1,0 +1,11 @@
+{
+  "name": "tilicho",
+  "owner": { "name": "Tilicho Labs" },
+  "plugins": [
+    {
+      "name": "tilicho-video-studio",
+      "source": "./",
+      "description": "Narrated product-video pipeline and workspace system"
+    }
+  ]
+}

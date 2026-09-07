@@ -1,0 +1,6 @@
+{
+  "name": "tilicho-video-studio",
+  "version": "0.1.0",
+  "description": "Tilicho's narrated product-video pipeline: workspace convention (context/assets/build/videos), audio-locked VO→whisper→comp→render→mux→master workflow, Tilicho brand defaults.",
+  "author": { "name": "Tilicho Labs" }
+}
