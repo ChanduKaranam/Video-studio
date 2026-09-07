@@ -1,0 +1,271 @@
+<title>Video Studio Field Guide</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --bg:#101318; --surface:#171B22; --surface2:#1D222B;
+    --fg:#EDECE8; --muted:#9BA0A8; --red:#E8384A;
+    --line:rgba(237,236,232,.14); --line-soft:rgba(237,236,232,.08);
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --sans:'Archivo',system-ui,-apple-system,sans-serif;
+  }
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+       font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:800px;margin:0 auto;padding:56px 24px 96px}
+  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.32em;color:var(--red);
+           text-transform:uppercase;font-weight:500}
+  h1{font-size:clamp(38px,6vw,54px);font-weight:800;line-height:1.05;margin:.35em 0 .3em;
+     letter-spacing:-.02em;text-wrap:balance}
+  h1 em{color:var(--red);font-style:italic}
+  .lede{color:var(--muted);font-size:18px;max-width:56ch;margin:0}
+  h2{font-size:26px;font-weight:700;letter-spacing:-.01em;margin:0 0 4px;text-wrap:balance}
+  h3{font-size:17px;font-weight:700;margin:26px 0 8px}
+  p{margin:12px 0;max-width:66ch}
+  a{color:var(--fg)}
+  section{margin-top:64px;padding-top:40px;border-top:1px solid var(--line-soft)}
+  .sec-eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.28em;color:var(--muted);
+               text-transform:uppercase;margin-bottom:10px}
+  .pipecard{margin:36px 0 0;padding:26px 30px;border:1px solid var(--line);border-radius:12px;
+            background:var(--surface);font-family:var(--mono)}
+  .pipecard .flow{font-size:clamp(14px,2.4vw,19px);letter-spacing:.08em;font-weight:500;
+                  overflow-x:auto;white-space:nowrap;padding-bottom:2px}
+  .pipecard .flow b{color:var(--red);font-weight:700}
+  .pipecard small{display:block;margin-top:10px;font-size:12px;letter-spacing:.3em;
+                  color:var(--red);text-transform:uppercase}
+  pre{background:var(--surface);border:1px solid var(--line-soft);border-radius:10px;
+      padding:18px 22px;overflow-x:auto;font-family:var(--mono);font-size:13.5px;
+      line-height:1.7;margin:16px 0}
+  pre .c{color:var(--muted)}
+  pre .r{color:var(--red)}
+  code{font-family:var(--mono);font-size:.88em;background:var(--surface2);
+       border:1px solid var(--line-soft);border-radius:5px;padding:2px 6px}
+  pre code{background:none;border:none;padding:0;font-size:inherit}
+  .steps{counter-reset:step;list-style:none;margin:24px 0 0;padding:0}
+  .steps>li{counter-increment:step;position:relative;padding:0 0 30px 62px}
+  .steps>li::before{content:counter(step,decimal-leading-zero);position:absolute;left:0;top:2px;
+        font-family:var(--mono);font-size:15px;font-weight:700;color:var(--red);
+        letter-spacing:.05em}
+  .steps>li::after{content:"";position:absolute;left:14px;top:34px;bottom:8px;
+        width:1px;background:var(--line-soft)}
+  .steps>li:last-child::after{display:none}
+  .steps>li:last-child{padding-bottom:0}
+  .steps h3{margin:0 0 6px;font-size:18px}
+  .steps p{margin:8px 0}
+  table{border-collapse:collapse;width:100%;margin:16px 0;font-size:15px}
+  th{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+     color:var(--muted);text-align:left;font-weight:500;padding:8px 14px 8px 0}
+  td{padding:10px 14px 10px 0;border-top:1px solid var(--line-soft);vertical-align:top}
+  td:first-child{font-family:var(--mono);font-size:13.5px;white-space:nowrap;color:var(--fg)}
+  td:last-child,th:last-child{padding-right:0}
+  .rule{display:grid;grid-template-columns:34px 1fr;gap:0 18px;padding:18px 0;
+        border-top:1px solid var(--line-soft)}
+  .rule:first-of-type{border-top:none;padding-top:6px}
+  .rule b.n{font-family:var(--mono);color:var(--red);font-size:15px;font-weight:700;padding-top:2px}
+  .rule h3{margin:0 0 4px;font-size:16.5px}
+  .rule p{margin:0;color:var(--muted);font-size:15px}
+  .rule p strong{color:var(--fg)}
+  .callout{border:1px solid var(--line);border-left:3px solid var(--red);border-radius:0 10px 10px 0;
+           background:var(--surface);padding:16px 22px;margin:20px 0;font-size:15px}
+  .callout p{margin:6px 0}
+  .tree{color:var(--fg)}
+  .tree .d{color:var(--muted)}
+  .tree .s{color:var(--red)}
+  .gotcha td:first-child{white-space:normal;font-family:var(--sans);font-weight:600;font-size:15px}
+  footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--line-soft);
+         font-family:var(--mono);font-size:12px;letter-spacing:.22em;color:var(--muted);
+         text-transform:uppercase}
+  footer b{color:var(--fg);font-weight:700}
+  @media (prefers-reduced-motion: no-preference){
+    .pipecard{transition:border-color .3s}
+    .pipecard:hover{border-color:rgba(232,56,74,.5)}
+  }
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">Tilicho Video Studio · Plugin 0.1.0</div>
+  <h1>Voice first. Visuals timed to the <em>words.</em></h1>
+  <p class="lede">How to take a brief to a mastered, narrated product video with the
+  <code>tilicho-video-studio</code> plugin — the exact workflow behind the Pathfinder,
+  BFSI and Edu films.</p>
+  <div class="pipecard">
+    <div class="flow">VO <b>→</b> WORDS <b>→</b> COMP <b>→</b> RENDER <b>→</b> MUX <b>→</b> BED <b>→</b> MASTER</div>
+    <small>Audio-locked · the voice is generated first, everything else is timed to it</small>
+  </div>
+</header>
+
+<section>
+  <div class="sec-eyebrow">Getting started</div>
+  <h2>Install once, doctor the machine</h2>
+  <p>From a clone of the plugin repo, in any terminal:</p>
+<pre><code>claude plugin marketplace add /path/to/tilicho-video-studio
+claude plugin install tilicho-video-studio@tilicho</code></pre>
+  <p>Then, inside Claude Code, run the environment doctor:</p>
+<pre><code>/video-setup</code></pre>
+  <p>It checks the four dependencies and prints a PASS / FIX table with the exact
+  command for anything missing:</p>
+  <table>
+    <tr><th>Dependency</th><th>Why the pipeline needs it</th></tr>
+    <tr><td>node ≥ 20</td><td>Runs the <code>hyperframes</code> CLI. On WSL it must be the <em>Linux</em> nvm build — a Windows node on the PATH breaks rendering.</td></tr>
+    <tr><td>hyperframes CLI</td><td>TTS voice, comp linting, checks, and headless rendering. Auto-installs on first <code>npx hyperframes</code> use.</td></tr>
+    <tr><td>ffmpeg + ffprobe</td><td>Every audio measurement, mux, and the final master.</td></tr>
+    <tr><td>python3 + faster-whisper</td><td>Word timestamps from the voiceover. CPU-only — no GPU or CUDA required.</td></tr>
+  </table>
+  <div class="callout">
+    <p>The doctor never runs <code>sudo</code>. If it prints a sudo line
+    (e.g. installing ffmpeg), run it yourself by typing it with a <code>!</code> prefix
+    in the Claude Code prompt, then run <code>/video-setup</code> again.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-eyebrow">The workspace</div>
+  <h2>Four folders, per-project subfolders</h2>
+  <p>Start every project with:</p>
+<pre><code>/video-new my-project</code></pre>
+  <p>That scaffolds this tree in your working directory. Everything the project
+  ever touches lives in one of the four top-level folders:</p>
+<pre class="tree"><code>context/my-project/         <span class="d"># every textual input — briefs, pasted docs, specs</span>
+  BRIEF.md
+  feedback/                 <span class="d"># each review round: YYYY-MM-DD-who.md</span>
+assets/my-project/          <span class="d"># every binary input — logos, screenshots, recordings</span>
+build/my-project/main/      <span class="d"># ONE live scene tree per cut</span>
+  script/v1.md v2.md …      <span class="s"># SOURCE — VO + beat sheet + changelog per version</span>
+  sec1/ … secN/
+    comp/index.html         <span class="s"># SOURCE — the animated composition</span>
+    vo/p1.wav  words.json   <span class="d"># derived — safe to delete, regenerates</span>
+    comp.mp4   secN.mp4     <span class="d"># derived</span>
+  gen_vo.py                 <span class="s"># SOURCE — the voiceover script lives here</span>
+  gen_bed.py  final.mp4     <span class="d"># bed generator · derived master</span>
+videos/my-project/
+  current/                  <span class="d"># the latest shipped mp4(s) + README.md</span>
+  versions/                 <span class="d"># every previous ship — append-only</span></code></pre>
+  <p>The red items are <strong>source of truth</strong>; the grey derived files are
+  disposable and regenerate from them. That split is what makes re-renders and
+  client forks cheap.</p>
+</section>
+
+<section>
+  <div class="sec-eyebrow">The six rules</div>
+  <h2>Non-negotiables the skills will hold you to</h2>
+  <div class="rule"><b class="n">R1</b><div><h3>Move inputs in before using them</h3>
+    <p>Anything the user pastes or drops — a Slack thread, a screenshot, a spreadsheet —
+    is saved into <strong>context/</strong> (text) or <strong>assets/</strong> (binary)
+    with a dated name <strong>before</strong> it's used. Never work from chat scrollback
+    or loose files in the repo root.</p></div></div>
+  <div class="rule"><b class="n">R2</b><div><h3>Rotate on every ship</h3>
+    <p>Previous deliverables move from <strong>current/</strong> to
+    <strong>versions/</strong> (append-only), the new mp4 lands in current/,
+    and the README is rewritten. current/ always answers “what's the latest and why”.</p></div></div>
+  <div class="rule"><b class="n">R3</b><div><h3>Version the script, then edit</h3>
+    <p>Every VO or visual change gets a new <strong>script/vN.md</strong> — full VO,
+    beat sheet, and what changed. The doc drives the edit, never the other way round.</p></div></div>
+  <div class="rule"><b class="n">R4</b><div><h3>Know source from derived</h3>
+    <p>Comps, the gen_vo SPEC, scripts, context and assets are source. Wavs, words.json,
+    renders, muxes, bed and final are derived — delete freely; the pipeline regenerates
+    only what's missing.</p></div></div>
+  <div class="rule"><b class="n">R5</b><div><h3>Audio-locked order, whole-block edits</h3>
+    <p>VO first, whisper words second, comp timeline last. When narration changes,
+    <strong>rewrite the entire timeline block</strong> to the new word times — patching
+    individual time literals corrupts timelines silently.</p></div></div>
+  <div class="rule"><b class="n">R6</b><div><h3>Gates before shipping</h3>
+    <p>Show-don't-tell (on-screen copy never prints the VO sentence), privacy-mask real
+    names and paths in recordings, <code>hyperframes check</code> must pass, and every
+    changed beat is verified by eye from rendered frames.</p></div></div>
+</section>
+
+<section>
+  <div class="sec-eyebrow">The build loop</div>
+  <h2>One scene, start to finish</h2>
+  <p>Repeat per scene, working in <code>build/&lt;project&gt;/&lt;cut&gt;/</code>.
+  You mostly describe what you want and the agent runs these — but this is what's
+  happening, and what to check at each step.</p>
+  <ol class="steps">
+    <li><h3>Write the script version</h3>
+      <p><code>script/v1.md</code>: the narration in full, plus a beat sheet — which
+      word triggers which visual. Get this approved before building; changing a comp
+      is 10× the cost of changing a sentence.</p></li>
+    <li><h3>Generate the voiceover</h3>
+      <p>Put the narration into the <code>SPEC</code> dict in <code>gen_vo.py</code> as
+      <em>breath groups</em> — one phrase per string, pause lengths as floats between
+      them — then <code>python3 gen_vo.py</code>. Kokoro <code>af_sky</code> at 0.80
+      reads it. Pronunciation is fixed by <em>rephrasing</em>, never respelling:
+      hyphenate initialisms (“A-I”, “S-D-K”), write “Tilly-cho”, and swap words the
+      voice mangles. Existing wavs are skipped — delete a wav to regenerate it.</p></li>
+    <li><h3>Extract word timestamps</h3>
+      <p><code>python3 whisper_words.py sec1/vo/p1.wav sec1/words.json</code>.
+      Mis-heard words are fine — only the timings are used.</p></li>
+    <li><h3>Build the composition</h3>
+      <p>Copy the skeleton from the <code>comp-craft</code> skill into
+      <code>sec1/comp/index.html</code>. Every beat lands at its trigger word's
+      <code>start</code> <strong>+ 0.3 s</strong> (the mux lead). Initial offsets go in
+      GSAP <code>fromTo</code>, never CSS <code>transform</code> — lint rejects that.</p></li>
+    <li><h3>Lint, check, render</h3>
+<pre><code>npx hyperframes lint  sec1/comp
+npx hyperframes check sec1/comp   <span class="c"># runtime · overlap · motion · contrast</span>
+npx hyperframes render sec1/comp -o sec1/comp.mp4 -w 2</code></pre>
+      <p>One comp at a time, always <code>-w 2</code>. Then extract stills at each beat
+      and actually look at them.</p></li>
+    <li><h3>Mux the voice onto the render</h3>
+      <p>Measure the VO's loudness, apply static gain to −18 LUFS with a limiter,
+      delay 300 ms, mux. The exact command lives in the <code>mix-master</code> skill —
+      never use adaptive loudnorm on narration; it pumps in the gaps.</p></li>
+  </ol>
+</section>
+
+<section>
+  <div class="sec-eyebrow">Shipping</div>
+  <h2>From sections to a deliverable</h2>
+<pre><code>/video-ship my-project</code></pre>
+  <p>Runs the ten-step checklist: verify gates → concat sections → regenerate the
+  music bed at the <em>exact</em> final duration → master (bed ducks under the voice,
+  limiter, −3.5 dB trim) → verify <strong>≈ −16.9 LUFS / −3.8 dBTP</strong> → name it
+  <code>Tilicho-&lt;Project&gt;-vN.mp4</code> → rotate current/ → rewrite the README →
+  hand you the file. If loudness lands outside −16…−18 LUFS, only the final
+  <code>volume=</code> is adjusted — never the limiter.</p>
+</section>
+
+<section>
+  <div class="sec-eyebrow">Forks</div>
+  <h2>A different cut for a different client</h2>
+  <p>Same film, different framing — a client-specific platform beat, a different
+  destination story. Don't rebuild; fork the cut:</p>
+  <ol class="steps">
+    <li><h3>Copy the live tree</h3><p><code>build/my-project/main/</code> →
+      <code>build/my-project/client-x/</code>, whole.</p></li>
+    <li><h3>Delete only what changes</h3><p>For each scene that differs, delete its
+      <em>derived</em> files (wav, words.json, renders, mux). Untouched scenes keep their
+      outputs byte-identical.</p></li>
+    <li><h3>Re-run the loop</h3><p>Edit the SPEC and comps for the changed scenes;
+      the skip-if-exists VO generator regenerates only what's missing. Re-ship.
+      A full fork of a 4-minute film is an afternoon, not a week.</p></li>
+  </ol>
+</section>
+
+<section>
+  <div class="sec-eyebrow">Field notes</div>
+  <h2>Gotchas that already cost a day each</h2>
+  <table class="gotcha">
+    <tr><th>Symptom</th><th>Cause and fix</th></tr>
+    <tr><td>Respelled word still mispronounced</td>
+        <td>Kokoro collapses respellings back to the original (“livz” → “lives”), and IPA gets read aloud. Rephrase — use a different word.</td></tr>
+    <tr><td>faster-whisper crashes on libcublas</td>
+        <td>It tried the GPU. Always <code>device='cpu'</code>, <code>compute_type='int8'</code> — the shipped <code>whisper_words.py</code> already does this.</td></tr>
+    <tr><td>Timeline subtly wrong after a retime</td>
+        <td>Someone patched individual time literals. Rewrite the whole timeline block from words.json (rule R5).</td></tr>
+    <tr><td>Lint error about CSS transform</td>
+        <td>Initial offsets belong in <code>tl.fromTo(el, {y:24}, {…})</code>, not <code>transform: translateY</code> in CSS.</td></tr>
+    <tr><td>Contrast warning mid-animation</td>
+        <td>A false positive sampled mid-tween between two valid states. If both end states pass and check passes overall, leave it.</td></tr>
+    <tr><td>Master clips past −3 dBTP</td>
+        <td>Static gain with no limiter. The mux command's <code>alimiter=limit=0.7079</code> is not optional.</td></tr>
+    <tr><td>Privacy blur slides off its target</td>
+        <td><code>ffmpeg -ss</code> isn't frame-exact. Use <code>trim=</code> filters and always-on masks.</td></tr>
+  </table>
+</section>
+
+<footer>
+  <b>tilicho-video-studio</b> · know the rules · trust the pipeline
+</footer>
+
+</div>
