@@ -90,11 +90,11 @@
 <div class="wrap">
 
 <header>
-  <div class="eyebrow">Tilicho Video Studio · Plugin 0.1.0</div>
+  <div class="eyebrow">Video Studio · Plugin 0.2.0</div>
   <h1>Voice first. Visuals timed to the <em>words.</em></h1>
   <p class="lede">How to take a brief to a mastered, narrated product video with the
-  <code>tilicho-video-studio</code> plugin — the exact workflow behind the Pathfinder,
-  BFSI and Edu films.</p>
+  <code>video-studio</code> plugin — a workflow proven across a family of shipped
+  pitch films.</p>
   <div class="pipecard">
     <div class="flow">VO <b>→</b> WORDS <b>→</b> COMP <b>→</b> RENDER <b>→</b> MUX <b>→</b> BED <b>→</b> MASTER</div>
     <small>Audio-locked · the voice is generated first, everything else is timed to it</small>
@@ -105,8 +105,8 @@
   <div class="sec-eyebrow">Getting started</div>
   <h2>Install once, doctor the machine</h2>
   <p>From a clone of the plugin repo, in any terminal:</p>
-<pre><code>claude plugin marketplace add /path/to/tilicho-video-studio
-claude plugin install tilicho-video-studio@tilicho</code></pre>
+<pre><code>claude plugin marketplace add /path/to/video-studio
+claude plugin install video-studio@video-studio</code></pre>
   <p>Then, inside Claude Code, run the environment doctor:</p>
 <pre><code>/video-setup</code></pre>
   <p>It checks the four dependencies and prints a PASS / FIX table with the exact
@@ -150,6 +150,21 @@ videos/my-project/
   <p>The red items are <strong>source of truth</strong>; the grey derived files are
   disposable and regenerate from them. That split is what makes re-renders and
   client forks cheap.</p>
+</section>
+
+<section>
+  <div class="sec-eyebrow">Your look</div>
+  <h2>Bring your own design.md</h2>
+  <p>Every visual decision — palette, typography, watermark, end lockup, even the
+  VO voice — comes from one design doc. Drop your own
+  <code>design.md</code> into <code>context/&lt;project&gt;/</code> and the whole
+  project follows it; without one, the plugin's clean built-in default applies
+  (dark <code>#101318</code> / light <code>#F4F3F0</code> moods with a single red
+  accent, grotesk display + mono labels).</p>
+  <p>Cover the same headings as the default — <strong>Palettes, Type, Marks,
+  Voice</strong> — and anything you leave out falls back to the default's value.
+  Hand the file to the agent at <code>/video-new</code> time, or any time before
+  the first comp is built.</p>
 </section>
 
 <section>
@@ -197,8 +212,8 @@ videos/my-project/
       <em>breath groups</em> — one phrase per string, pause lengths as floats between
       them — then <code>python3 gen_vo.py</code>. Kokoro <code>af_sky</code> at 0.80
       reads it. Pronunciation is fixed by <em>rephrasing</em>, never respelling:
-      hyphenate initialisms (“A-I”, “S-D-K”), write “Tilly-cho”, and swap words the
-      voice mangles. Existing wavs are skipped — delete a wav to regenerate it.</p></li>
+      hyphenate initialisms (“A-I”, “S-D-K”), spell tricky brand names phonetically
+      in the SPEC only, and swap words the voice mangles. Existing wavs are skipped — delete a wav to regenerate it.</p></li>
     <li><h3>Extract word timestamps</h3>
       <p><code>python3 whisper_words.py sec1/vo/p1.wav sec1/words.json</code>.
       Mis-heard words are fine — only the timings are used.</p></li>
@@ -227,7 +242,7 @@ npx hyperframes render sec1/comp -o sec1/comp.mp4 -w 2</code></pre>
   <p>Runs the ten-step checklist: verify gates → concat sections → regenerate the
   music bed at the <em>exact</em> final duration → master (bed ducks under the voice,
   limiter, −3.5 dB trim) → verify <strong>≈ −16.9 LUFS / −3.8 dBTP</strong> → name it
-  <code>Tilicho-&lt;Project&gt;-vN.mp4</code> → rotate current/ → rewrite the README →
+  <code>&lt;Project&gt;-vN.mp4</code> → rotate current/ → rewrite the README →
   hand you the file. If loudness lands outside −16…−18 LUFS, only the final
   <code>volume=</code> is adjusted — never the limiter.</p>
 </section>
@@ -272,7 +287,7 @@ npx hyperframes render sec1/comp -o sec1/comp.mp4 -w 2</code></pre>
 </section>
 
 <footer>
-  <b>tilicho-video-studio</b> · know the rules · trust the pipeline
+  <b>video-studio</b> · know the rules · trust the pipeline
 </footer>
 
 </div>

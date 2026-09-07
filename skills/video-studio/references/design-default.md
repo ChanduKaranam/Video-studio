@@ -1,4 +1,9 @@
-# Tilicho brand defaults
+# Default design
+
+This is the design every project uses **unless** the project supplies its own
+`context/<project>/design.md` — a user-provided design file always wins (see
+"Design system" in the video-studio SKILL.md). A project design.md should cover
+the same headings as this file; anything it omits falls back to the values here.
 
 ## Palettes
 
@@ -15,14 +20,14 @@ for product-UI tours).
 - Foreground `#0A0E16`
 - Accent (red) `#D40816`
 
-Use the accent sparingly — one red element per frame reads as intent; three
+Use the accent sparingly — one accent element per frame reads as intent; three
 read as noise. Evidence-grade chips and secondary labels sit at ~55–65 %
 foreground opacity.
 
 ## Type
 
-- Display: a grotesk (what the project already loads — reuse the font files
-  from an existing build's `assets/fonts/` rather than adding new ones).
+- Display: a grotesk (reuse font files from an existing build's
+  `assets/fonts/` rather than adding new ones).
 - Mono: for chips, tags, eyebrows, data labels (`MEASURED`, `READ-ONLY`,
   `ANY SOURCE` style). Eyebrows are letter-spaced uppercase mono.
 
@@ -31,16 +36,16 @@ foreground opacity.
 - **Watermark:** product name, small, top-right, persistent — but hidden under
   full-bleed slams, refusal beats, and end lockups (use `set()` calls or
   `data-layout-allow-overlap` as appropriate).
-- **End lockup:** `<product> BY tilicho labs` — product name display-size,
-  "BY tilicho labs" small mono beneath. Last beat of the film, on dark.
+- **End lockup:** `<product> BY <maker>` — product name display-size, the
+  "BY <maker>" line small mono beneath. Last beat of the film, on dark.
 - Logo files: keep per-project copies in `assets/<project>/logos/`; source
   third-party marks from simpleicons/wikimedia and record where each came from.
 
 ## Voice
 
 - Default VO voice: Kokoro `af_sky` at speed `0.80` (see the `vo-pipeline`
-  skill for generation rules). Pronounce the company as written "Tilly-cho"
-  in VO text.
+  skill for generation rules). A project design.md may name a different
+  Kokoro voice/speed.
 
 ## Loudness targets
 

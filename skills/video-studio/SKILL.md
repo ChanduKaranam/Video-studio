@@ -1,9 +1,9 @@
 ---
 name: video-studio
-description: Use for any Tilicho video work — making, editing, forking, or shipping a narrated product video, pitch video, explainer, launch or demo film; starting a new video project or a new cut for a different client; organizing video inputs, scripts, versions, or deliverables. Entry point that defines the workspace folder system, the six working rules, and routes to vo-pipeline (voiceover + timing), comp-craft (composition + animation), and mix-master (audio mux + mastering).
+description: Use for any video-studio work — making, editing, forking, or shipping a narrated product video, pitch video, explainer, launch or demo film; starting a new video project or a new cut for a different client; organizing video inputs, scripts, versions, or deliverables. Entry point that defines the workspace folder system, the six working rules, the design.md override convention, and routes to vo-pipeline (voiceover + timing), comp-craft (composition + animation), and mix-master (audio mux + mastering).
 ---
 
-# Tilicho Video Studio
+# Video Studio
 
 You build narrated product videos through an **audio-locked pipeline**: the
 voiceover is generated first, word timestamps are extracted from it, and the
@@ -26,7 +26,8 @@ Every project lives in four top-level folders (scaffolded by `/video-new`):
 <workspace>/
 ├── context/<project>/             # every textual input, moved here BEFORE use
 │   ├── BRIEF.md                   # what the video is, audience, length budget
-│   ├── <dated pasted docs>.md     # e.g. 2026-09-07-teja-narration-v3.md
+│   ├── design.md                  # OPTIONAL — project design system (see below)
+│   ├── <dated pasted docs>.md     # e.g. 2026-09-07-narration-v3.md
 │   └── feedback/
 │       └── YYYY-MM-DD-<who>.md    # each review round, verbatim
 ├── assets/<project>/              # every binary input the user drops
@@ -46,10 +47,25 @@ Every project lives in four top-level folders (scaffolded by `/video-new`):
 │   ├── list.txt  bed.wav  final.mp4  # derived
 └── videos/<project>/
     ├── current/
-    │   ├── Tilicho-<Project>-vN.mp4   # latest batch (may be several cuts)
+    │   ├── <Project>-vN.mp4           # latest batch (may be several cuts)
     │   └── README.md                  # from references/readme-template.md
     └── versions/                      # every previously shipped mp4, never deleted
 ```
+
+## Design system
+
+Every visual decision (palette, type, marks, voice) comes from **one** design
+doc, resolved in this order:
+
+1. `context/<project>/design.md` — a design file the user supplies for their
+   project. If the user hands you any design/brand doc, save it there (rule 1)
+   and use it for ALL visuals in that project.
+2. `references/design-default.md` — the built-in default, used whenever the
+   project has no design.md.
+
+A project design.md should cover the default's headings (Palettes, Type,
+Marks, Voice); anything it omits falls back to the default. Never mix the two
+within a project beyond that fallback.
 
 **Cuts:** the default cut is `main/`. A fork for a different client or framing
 gets its own cut directory (e.g. `gcp/`, `migration/`) — created by copying an
@@ -93,7 +109,7 @@ untouched sections stay byte-identical.
 | VO text, breath groups, pronunciation, whisper, word timings, retiming | `vo-pipeline` skill |
 | Composition HTML, GSAP timelines, beats, layout, checks, rendering | `comp-craft` skill |
 | Section mux, gain, concat, music bed, ducking, mastering, loudness | `mix-master` skill |
-| Brand colors, fonts, watermark, lockup, voice default | `references/tilicho-brand.md` |
+| Colors, fonts, watermark, lockup, voice | `context/<project>/design.md`, else `references/design-default.md` |
 | Deep HyperFrames comp authoring | the `hyperframes` skill family **if installed**; otherwise `comp-craft` is sufficient |
 
 ## Environment notes

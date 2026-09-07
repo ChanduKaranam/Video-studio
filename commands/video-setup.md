@@ -1,5 +1,5 @@
 ---
-description: Environment doctor for the Tilicho video pipeline — checks node, hyperframes CLI, ffmpeg, faster-whisper; prints exact fixes
+description: Environment doctor for the video-studio pipeline — checks node, hyperframes CLI, ffmpeg, faster-whisper; prints exact fixes
 ---
 
 Check the machine for every dependency of the video pipeline and print a

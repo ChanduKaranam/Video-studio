@@ -16,6 +16,12 @@ cp "${CLAUDE_PLUGIN_ROOT}/skills/vo-pipeline/references/gen_vo_template.py"  bui
 cp "${CLAUDE_PLUGIN_ROOT}/skills/mix-master/references/gen_bed_template.py" build/$P/$C/gen_bed.py
 ```
 
+Ask (or check) whether the user has their own design system for this project.
+If they provide any design/brand doc, save it as `context/$P/design.md` — it
+then governs ALL visuals for the project. If not, the built-in default
+(`${CLAUDE_PLUGIN_ROOT}/skills/video-studio/references/design-default.md`)
+applies; don't copy it into the project.
+
 Then write `context/$P/BRIEF.md` with this stub (fill what's known, leave
 questions for the user):
 

@@ -20,8 +20,8 @@ order, stop on any failure:
    loudnorm print. Outside −16…−18 LUFS: adjust the final `volume=` only.
 6. **Name and place:** determine the next version number N (look at
    `videos/$1/current/` and `versions/`). Copy `final.mp4` →
-   `videos/$1/current/Tilicho-<Project>-vN.mp4` (CamelCase project; for
-   non-main cuts: `Tilicho-<Project>-<Cut>-vN.mp4`).
+   `videos/$1/current/<Project>-vN.mp4` (CamelCase project; for
+   non-main cuts: `<Project>-<Cut>-vN.mp4`).
 7. **Rotate:** move the PREVIOUS version's mp4(s) from `current/` to
    `versions/` (append-only — never delete or overwrite there).
 8. **README:** rewrite `videos/$1/current/README.md` from

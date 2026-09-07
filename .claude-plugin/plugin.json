@@ -1,6 +1,6 @@
 {
-  "name": "tilicho-video-studio",
-  "version": "0.1.0",
-  "description": "Tilicho's narrated product-video pipeline: workspace convention (context/assets/build/videos), audio-locked VO→whisper→comp→render→mux→master workflow, Tilicho brand defaults.",
-  "author": { "name": "Tilicho Labs" }
+  "name": "video-studio",
+  "version": "0.2.0",
+  "description": "Narrated product-video pipeline: workspace convention (context/assets/build/videos), audio-locked VO→whisper→comp→render→mux→master workflow, per-project design.md overrides with a built-in default design.",
+  "author": { "name": "Purna Chandra Rao" }
 }

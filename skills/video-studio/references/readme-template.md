@@ -11,7 +11,7 @@ Fill every placeholder; delete nothing. Rewrite this file on every ship
 2–4 sentences: product, audience, core message.
 
 ## Files in this batch
-- Tilicho-<Project>-vN.mp4 — main cut
+- <Project>-vN.mp4 — main cut
 - (other cuts shipped together, one line each)
 
 ## Changes in this version

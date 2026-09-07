@@ -1,9 +1,9 @@
 {
-  "name": "tilicho",
-  "owner": { "name": "Tilicho Labs" },
+  "name": "video-studio",
+  "owner": { "name": "Purna Chandra Rao" },
   "plugins": [
     {
-      "name": "tilicho-video-studio",
+      "name": "video-studio",
       "source": "./",
       "description": "Narrated product-video pipeline and workspace system"
     }

@@ -1,6 +1,6 @@
 ---
 name: vo-pipeline
-description: Use when writing or generating voiceover for a Tilicho video, fixing pronunciation, extracting word timestamps, or retiming visuals to narration — Kokoro breath-group TTS, faster-whisper word timings, and the VO-first retime loop. Covers gen_vo.py SPEC format, rephrase-not-respell pronunciation rules, and beat placement from words.json.
+description: Use when writing or generating voiceover for a video-studio project, fixing pronunciation, extracting word timestamps, or retiming visuals to narration — Kokoro breath-group TTS, faster-whisper word timings, and the VO-first retime loop. Covers gen_vo.py SPEC format, rephrase-not-respell pronunciation rules, and beat placement from words.json.
 ---
 
 # VO pipeline
@@ -34,7 +34,9 @@ Each project's `build/<project>/<cut>/gen_vo.py` (copied from
   (/laɪvz/), and IPA markup gets read aloud. If a word reads wrong, choose a
   different word ("lives" → "runs").
 - Hyphenate initialisms so they're spelled out: "A-I", "S-D-K", "D-L-P".
-- Company name: write "Tilly-cho" in VO text.
+- Spell tricky brand names phonetically in the VO text (e.g. "Tilly-cho" for
+  a name spelled Tilicho) — the phonetic form goes only in the SPEC, never on
+  screen.
 - Listen to every regenerated group before using it; heteronyms and unusual
   names are the usual offenders.
 

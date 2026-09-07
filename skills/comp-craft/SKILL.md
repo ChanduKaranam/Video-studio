@@ -17,7 +17,8 @@ Each scene is a self-contained HTML file at
   `window.__timelines = { main: tl }` — id must match `data-composition-id`.
 - GSAP from cdnjs. Fonts/images referenced locally (copy into the comp dir or
   `assets/`), never hotlinked.
-- Colors/type/watermark/lockup: `video-studio/references/tilicho-brand.md`.
+- Colors/type/watermark/lockup: the project's `context/<project>/design.md`
+  if it exists, else `video-studio/references/design-default.md`.
 
 ## Timeline rules
 
