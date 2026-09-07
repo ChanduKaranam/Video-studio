@@ -19,18 +19,16 @@ workspace convention.
 
 ## Install
 
-From a git checkout of this repo:
-
 ```bash
-claude plugin marketplace add /path/to/video-studio
+claude plugin marketplace add ChanduKaranam/Video-studio
 claude plugin install video-studio@video-studio
 ```
 
-Or run Claude Code with the plugin loaded directly:
+Then restart Claude Code. To get updates later: `claude plugin update video-studio`.
 
-```bash
-claude --plugin-dir /path/to/video-studio
-```
+Alternatives: from a local checkout, `claude plugin marketplace add
+/path/to/video-studio` (same install command), or run directly with
+`claude --plugin-dir /path/to/video-studio`.
 
 ## First run
 
