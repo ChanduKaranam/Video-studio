@@ -27,6 +27,8 @@ Each scene is a self-contained HTML file at
   timeline block against the new words. Generic sed/patches of bare time
   literals (`, 3.4)`) hit unrelated lines and corrupt timelines silently —
   this has happened; don't repeat it.
+- **No CSS `transform` on animated elements** — lint rejects it. Set initial
+  offsets in GSAP via `tl.fromTo(el, { y: 24 }, { y: 0, ... })`, not in CSS.
 - Beat anatomy that works: mono eyebrow (context label) → display headline
   (one claim, key word italic/accent) → mechanism animation (the thing the VO
   describes, actually moving). One red accent element per frame.
