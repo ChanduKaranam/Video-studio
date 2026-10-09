@@ -1,6 +1,6 @@
 {
   "name": "video-studio",
-  "version": "0.2.0",
-  "description": "Narrated product-video pipeline: workspace convention (context/assets/build/videos), audio-locked VO→whisper→comp→render→mux→master workflow, per-project design.md overrides with a built-in default design.",
+  "version": "0.3.0",
+  "description": "Narrated product-video pipeline: workspace convention (context/assets/build/videos), audio-locked VO→whisper→comp→render→mux→master workflow, per-project design.md overrides with a built-in default design; bundled motion doctrine (vector-matched seams, cut-the-curve, seam-craft, oversized cursor) and a mandatory visual-QA gate before every render.",
   "author": { "name": "Purna Chandra Rao" }
 }

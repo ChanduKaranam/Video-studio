@@ -13,6 +13,14 @@ workspace convention.
 - An **audio-locked pipeline**: Kokoro VO in breath groups → faster-whisper word
   timestamps → GSAP/HyperFrames comps retimed to the words → per-section render
   and mux → synthesized music bed with sidechain ducking → mastered ≈ −16.9 LUFS.
+- A **motion doctrine** (bundled skills `motion-doctrine`, `cut-the-curve`,
+  `seam-craft`, `oversized-cursor` + the plugin's own `smooth-motion.md` method):
+  one current per film, velocity-matched seams at every cut, no idle wobble,
+  causal motion — so films flow instead of popping in and out.
+- A **testing sequence baked into the process**: lint → check → snapshot every
+  beat and read it by eye → render → frame-verify → seam sheets → internal cuts →
+  assembly loudness. Nothing renders before it has been looked at
+  (`comp-craft/references/visual-qa.md`).
 - A **design system per project**: drop a `design.md` into a project's
   `context/` folder and every visual follows it; without one, a clean built-in
   default design applies.

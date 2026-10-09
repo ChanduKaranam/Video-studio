@@ -32,3 +32,5 @@ order, stop on any failure:
 10. **Deliver:** hand the user the new mp4 (send the file if the session
     supports it; otherwise give the full path) with a one-line summary:
     duration, loudness, what changed.
+
+Before rotating and shipping, confirm the gates in `comp-craft/references/smooth-motion.md` (T1–T9) ran for every changed section, and that `visual-qa.md` was applied to every beat. If any gate was skipped, say so in the README under a 'Gates skipped' line — never silently.

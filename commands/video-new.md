@@ -42,3 +42,5 @@ regenerates only what's missing and untouched sections stay byte-identical.
 Finally, load the `video-studio` skill if not already loaded, and remind
 yourself of rule 1 (move-in): every input the user pastes or drops from now
 on is saved into `context/$P/` or `assets/$P/` with a dated name before use.
+
+After scaffolding, remind yourself (not the user): every comp in this project follows `comp-craft/references/smooth-motion.md` automatically — current, vector ledger in script/v1.md, helpers, and the nine test gates before any render.
