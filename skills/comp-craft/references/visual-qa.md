@@ -47,3 +47,26 @@ the same beats (renders can differ from snapshots: cold-seek states, motion-path
 
 A render made before step 3 is not a preview — it is a wasted render and a shipped
 defect waiting to happen.
+
+## 4. Motion stability test (jitter) — run on the RENDER when anything "shakes"
+
+Snapshots cannot show jitter; only consecutive render frames can. Two tweens on the same
+property of one element (e.g. an entrance tween still running when a relative `x:'-=60'`
+drift starts) produce a fast left/right shake that reads as a glitch. Test it, don't guess:
+
+```bash
+ffmpeg -v error -y -i secN/comp.mp4 -vf "select='between(t,T0,T1)',fps=30,crop=W:H:X:Y" jit/f%03d.png
+python3 - <<'EOF'
+import glob;from PIL import Image;import numpy as np
+fs=sorted(glob.glob('jit/f*.png'));prev=None;out=[]
+for f in fs:
+    a=np.asarray(Image.open(f).convert('L')).astype(int)
+    if prev is not None: out.append(round(float(np.abs(a-prev).mean()),2))
+    prev=a
+print(out)   # once the element has landed, every value must be ~0.00-0.02; spikes = jitter
+EOF
+```
+
+Crop to the element's landed position; a monotonic decay to zero is a clean landing. Any
+oscillation after landing is a defect — find the second tween on that property (grep the
+selector), move drifts to a parent container, and re-test on a fresh render.
