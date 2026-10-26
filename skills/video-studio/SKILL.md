@@ -14,6 +14,8 @@ load in this order **before the first comp line is written**, without the user a
    sustained-motion routes → helpers → causal motion → seams) and the nine test gates.
 2. `comp-craft/references/motion.md` — the seam helpers to paste into every timeline.
 3. `comp-craft/references/visual-qa.md` — the eye gate: nothing renders unseen.
+3b. `video-studio/references/film-craft.md` — direction before code, rhythm (shot-length
+   variation, rests, bursts), SFX doctrine, first-frame poster rule, per-client variants.
 4. The bundled `motion-doctrine` skill (and `cut-the-curve` when writing seam tweens,
    `seam-craft` when assembling, `oversized-cursor` for any UI scene).
 
@@ -129,6 +131,24 @@ untouched sections stay byte-identical.
    contrast) must pass — mid-tween contrast warnings on animating elements
    are acceptable when both end states pass.
 
+## Skill lineup by pipeline stage
+
+When the project-level motion skills are installed (`gsap-*`, `animation-forge`,
+`linear-style-illustration`), they load **at the stage below, before that stage's work
+starts** — same footing as the mandatory list above, not on-demand lookups. Doctrine
+precedence is fixed: motion-doctrine / cut-the-curve / seam-craft are LAW; gsap-* are
+the engine manual; animation-forge is TASTE and yields to the law wherever they
+disagree (its ambient float/idle loops are banned here).
+
+| Stage | Load before starting | What it decides |
+|---|---|---|
+| Direction & script | `film-craft.md` + **animation-forge** Parts 1–2 | The film's motion personality: ONE primary ease + duration hierarchy, written into the beat sheet |
+| Comp authoring | `comp-craft` + **motion-doctrine** (law), **gsap-timeline** + **gsap-core** (engine) | Timeline structure (labels, position params, defaults), transform aliases, ease strings |
+| Text reveals, SVG draw/morph, counters | **gsap-plugins** + **gsap-utils** | SplitText-style reveals, DrawSVG, MorphSVG, snap/mapRange/distribute |
+| Diagram / architecture scenes | **linear-style-illustration** | Dark pill-node diagram scenes (adapt its tokens to the project design.md palette — design.md still wins on color) |
+| Seams & assembly | **cut-the-curve** / **seam-craft** (law) | Velocity-matched cuts, vector ledger |
+| Pre-render QA | `visual-qa.md`; **gsap-performance** when frames drop or the comp is heavy | Eye gate; transform/opacity-only audit, quickTo, cleanup |
+
 ## Routing
 
 | Topic | Go to |
@@ -137,9 +157,14 @@ untouched sections stay byte-identical.
 | Composition HTML, GSAP timelines, beats, layout, checks, rendering | `comp-craft` skill |
 | Transitions, seams between sections, flow, eases, "it feels stuck" | `comp-craft` → `references/smooth-motion.md` (method + tests), `references/motion.md` (helpers), then `motion-doctrine` / `cut-the-curve` / `seam-craft` / `oversized-cursor` skills (full doctrine, bundled) |
 | Pre-render visual check, placeholder-looking elements, "this looks cheap" | `comp-craft` → `references/visual-qa.md` |
+| Concept/direction, trailer pacing, "feels like a metronome/PPT", SFX beyond the bed, per-client variants, thumbnail frame | `references/film-craft.md` |
 | Section mux, gain, concat, music bed, ducking, mastering, loudness | `mix-master` skill |
 | Colors, fonts, watermark, lockup, voice | `context/<project>/design.md`, else `references/design-default.md` |
 | Deep HyperFrames comp authoring | the `hyperframes` skill family **if installed**; otherwise `comp-craft` is sufficient |
+| GSAP API specifics — tween vars, eases, CustomEase, SplitText, DrawSVG/MorphSVG/MotionPath, Flip, physics plugins, gsap.utils | official `gsap-core` / `gsap-timeline` / `gsap-plugins` / `gsap-utils` skills **if installed** |
+| Render jank, dropped frames, heavy comps | `gsap-performance` skill **if installed** |
+| Easing personality, Disney principles, stagger patterns, duration hierarchy (taste, not law) | `animation-forge` skill **if installed** — advisory only: where it conflicts with `motion-doctrine` (e.g. ambient float/idle motion is banned here), motion-doctrine wins |
+| Dark Linear/AI-OS style diagram scenes — glowing kernel, pill nodes, cyan/purple duotone | `linear-style-illustration` skill **if installed** |
 
 ## Environment notes
 
